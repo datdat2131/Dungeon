@@ -1,5 +1,4 @@
 target/
+*.class
 .idea/
 .vscode/
-*.iml
-.DS_Store

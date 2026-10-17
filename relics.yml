@@ -1,0 +1,25 @@
+relics:
+  blood_battery:
+    name: "Blood Battery"
+    rarity: "RARE"
+    description: "Your next strikes gain a small damage bonus after combat events."
+  echo_ward:
+    name: "Echo Ward"
+    rarity: "EPIC"
+    description: "A defensive relic. Prototype: gain a brief resistance effect after a kill."
+  fractured_hourglass:
+    name: "Fractured Hourglass"
+    rarity: "RARE"
+    description: "Utility relic. Prototype: gain a short speed boost after a kill."
+  ash_collector:
+    name: "Ash Collector"
+    rarity: "RARE"
+    description: "Elite kills grant bonus dungeon currency in a future version."
+  void_heart:
+    name: "Void Heart"
+    rarity: "MYTHIC"
+    description: "Prototype relic with a strong but temporary combat effect."
+  grave_charm:
+    name: "Grave Charm"
+    rarity: "EPIC"
+    description: "Gain a short regeneration effect after the boss falls."

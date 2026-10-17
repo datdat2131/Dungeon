@@ -1,0 +1,19 @@
+name: CursedRelics
+version: 0.1.0
+main: com.example.cursedrelics.CursedRelicsPlugin
+api-version: '1.21'
+author: OpenAI
+description: Instance-based RPG dungeon with cursed loot and relic drafts.
+commands:
+  dungeon:
+    description: Enter and manage CursedRelics dungeons.
+    usage: /dungeon <join|leave|party|relics>
+    aliases: [dun]
+  cr:
+    description: CursedRelics administration.
+    usage: /cr admin reload
+permissions:
+  cursedrelics.play:
+    default: true
+  cursedrelics.admin:
+    default: op

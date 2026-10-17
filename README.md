@@ -1,35 +1,43 @@
-# CursedRelics 0.1.0 — Paper 1.21.4
+# CursedRelics 0.1.0 — Flat GitHub project
 
-Plugin prototype for Paper 1.21.4, built with Java 21 and Maven.
+Paper 1.21.4 plugin prototype; Java 21.
 
-## Build on GitHub Actions
+## This ZIP uses the same flat layout as the example
 
-1. Create a GitHub repository.
-2. Upload **the contents of this ZIP** to the repository root. `pom.xml` must appear at the same level as `src/` and `.github/`; do not leave everything nested inside another `CursedRelics-0.1.0/` directory.
-3. Commit/push the files. The workflow in `.github/workflows/build.yml` runs automatically on push, and can also be started from **Actions → Build CursedRelics → Run workflow**.
-4. Open the completed workflow run and download the `CursedRelics-Paper-1.21.4` artifact. It contains `CursedRelics-0.1.0.jar`.
+All `.java` files, `pom.xml`, `plugin.yml`, `config.yml`, `dungeons.yml` and `relics.yml` are in the repository root. Java package declarations remain intact; Maven compiles these root-level source files using the configured `sourceDirectory`.
 
-If the build fails, open the failed job and read the **first actual error** in `Compile and package` (or earlier). A red workflow by itself does not tell us whether the problem is repository layout, dependency resolution, or Java compilation. Share that log to diagnose it.
+## Upload to GitHub
+
+1. Create a repository.
+2. Extract this ZIP.
+3. Upload the CONTENTS of the extracted folder to the repository root. Do not upload an extra parent folder.
+4. Ensure `.github/workflows/build.yml` is included (GitHub's upload interface may hide dot-folders; if so, create the workflow in GitHub or upload it using Git).
+5. Commit to `main` or `master`, then open Actions.
+
+The workflow checks for required root files, runs `mvn clean package` on Java 21, then uploads `CursedRelics-Paper-1.21.4` as an artifact.
 
 ## Build locally
 
-Requirements: JDK 21 and Maven. From the directory containing `pom.xml`, run:
+Requires JDK 21 and Maven 3.9+:
 
 ```bash
-mvn --batch-mode clean package
+mvn clean package
 ```
 
-The JAR is written to `target/CursedRelics-0.1.0.jar`.
+Output: `target/CursedRelics-0.1.0.jar`.
 
 ## Commands
 
-- `/dungeon join` — create an arena and start the boss encounter
-- `/dungeon leave` — leave the instance
+- `/dungeon help`
+- `/dungeon join`
+- `/dungeon leave`
 - `/dungeon party invite <player>`
 - `/dungeon party accept`
 - `/dungeon relics`
-- `/cr admin reload` — reloads `config.yml`
+- `/cr admin reload`
 
 ## Prototype limitations
 
-This is an early prototype, not a production-ready dungeon system. Arenas are built in the current world at generated coordinates. Some relic and curse effects are descriptive only; party management and cleanup are minimal. Test on a backup or dedicated server first. GitHub Actions builds the JAR; it does not host or run a Minecraft server.
+This is not a production-ready dungeon system. The arena is a simple generated test room; it does not clone templates or implement multi-stage rooms. Several relic/curse effects are descriptions only, inventory snapshots and crash-safe recovery are not implemented, and party management is minimal. Test on a backup server.
+
+The workflow and file layout are prepared, but a successful compilation cannot be claimed until GitHub Actions actually completes the Maven build.

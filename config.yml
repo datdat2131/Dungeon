@@ -1,0 +1,10 @@
+settings:
+  max-party-size: 5
+  instance-spacing: 160
+  arena-radius: 18
+  cleanup-delay-seconds: 180
+  boss-health: 180.0
+  boss-damage: 9.0
+  relic-draft-choices: 3
+  legendary-cursed-chance: 0.80
+  keep-inventory: true

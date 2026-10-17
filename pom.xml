@@ -1,11 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>com.example</groupId><artifactId>CursedRelics</artifactId><version>0.1.0</version>
+  <groupId>com.example</groupId><artifactId>CursedRelics</artifactId><version>0.1.0</version><packaging>jar</packaging>
   <properties><maven.compiler.release>21</maven.compiler.release><project.build.sourceEncoding>UTF-8</project.build.sourceEncoding></properties>
   <repositories><repository><id>papermc</id><url>https://repo.papermc.io/repository/maven-public/</url></repository></repositories>
   <dependencies><dependency><groupId>io.papermc.paper</groupId><artifactId>paper-api</artifactId><version>1.21.4-R0.1-SNAPSHOT</version><scope>provided</scope></dependency></dependencies>
-  <build><finalName>CursedRelics-0.1.0</finalName><plugins>
-    <plugin><groupId>org.apache.maven.plugins</groupId><artifactId>maven-compiler-plugin</artifactId><version>3.13.0</version><configuration><release>21</release></configuration></plugin>
-  </plugins></build>
+  <build>
+    <finalName>CursedRelics-0.1.0</finalName>
+    <sourceDirectory>${project.basedir}</sourceDirectory>
+    <resources><resource><directory>${project.basedir}</directory><includes><include>plugin.yml</include><include>config.yml</include><include>dungeons.yml</include><include>relics.yml</include></includes></resource></resources>
+    <plugins>
+      <plugin><groupId>org.apache.maven.plugins</groupId><artifactId>maven-enforcer-plugin</artifactId><version>3.5.0</version>
+        <executions><execution><id>check-flat-project-files</id><phase>validate</phase><goals><goal>enforce</goal></goals><configuration><rules><requireFilesExist>
+          <message>Missing required files at repository root. Upload the contents of the ZIP, not a parent folder.</message>
+          <files>
+            <file>${project.basedir}/plugin.yml</file><file>${project.basedir}/config.yml</file>
+            <file>${project.basedir}/CursedRelicsPlugin.java</file><file>${project.basedir}/DungeonCommand.java</file>
+            <file>${project.basedir}/DungeonManager.java</file><file>${project.basedir}/DungeonInstance.java</file>
+            <file>${project.basedir}/PartyManager.java</file><file>${project.basedir}/LootService.java</file>
+            <file>${project.basedir}/RelicDraftService.java</file>
+          </files>
+        </requireFilesExist></rules></configuration></execution></executions>
+      </plugin>
+      <plugin><groupId>org.apache.maven.plugins</groupId><artifactId>maven-compiler-plugin</artifactId><version>3.14.0</version><configuration><release>21</release></configuration></plugin>
+    </plugins>
+  </build>
 </project>

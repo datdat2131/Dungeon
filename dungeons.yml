@@ -1,0 +1,5 @@
+dungeons:
+  sunken_crypt:
+    display-name: "Sunken Crypt"
+    description: "A first test dungeon. Defeat the Hollow King."
+    boss-name: "The Hollow King"
