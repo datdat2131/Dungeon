@@ -37,3 +37,14 @@ Copy that JAR into the server's `plugins/` directory and restart a Paper 1.21.4 
 - The config `keep-inventory` setting is reserved for a future inventory snapshot implementation; the prototype does not yet snapshot/restore player inventories.
 - Party invites are intentionally minimal; persistent parties, offline membership, shared loot voting, anti-exploit transaction recovery and crash-safe instance recovery are not implemented.
 - Test on a backup server before use. This is a starter prototype, not production-ready software.
+
+## Build automatically on GitHub Actions
+
+The repository includes `.github/workflows/build.yml`. After you upload/commit the whole project to GitHub:
+
+1. Open the repository's **Actions** tab.
+2. Select **Build CursedRelics**. A push to `main`/`master`, a pull request, or manual **Run workflow** starts a build.
+3. Open a successful workflow run and download the `CursedRelics-Paper-1.21.4` artifact. It contains `CursedRelics-0.1.0.jar`.
+4. Put the JAR into your Paper 1.21.4 server's `plugins/` directory and restart the test server.
+
+The workflow builds the source; it does not run a Minecraft server or deploy the plugin to a server. The first Actions run is also the first remote compile check for this project. If it fails, open the failed run and inspect the Maven compiler log.
